@@ -1,6 +1,34 @@
+"use client"
+
 import { Shield, BookOpen, TrendingUp } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function ProofAndTrust() {
+  const testimonials = [
+    {
+      quote: '"I finally feel like we have a real plan. Besides only relying in cameras. Just practical information."',
+      author: "— A & C, Woodstock",
+    },
+    {
+      quote: '"The awareness changed everything. Now wife and kids know what to do if I can\'t."',
+      author: "— R & G, Kitchener",
+    },
+    {
+      quote: '"Clear, calm, and practical. We fixed the weak points and sleep better."',
+      author: "— D, London",
+    },
+  ]
+
+  const [tab, setTab] = useState("t0")
+  useEffect(() => {
+    const id = setInterval(() => {
+      const idx = testimonials.findIndex((_, i) => `t${i}` === tab)
+      const next = (idx + 1) % testimonials.length
+      setTab(`t${next}`)
+    }, 5000)
+    return () => clearInterval(id)
+  }, [tab, testimonials.length])
   return (
     <section id="proof" className="py-16 md:py-24 px-4 md:px-6 bg-[#0E1A18]" data-section="proof">
       <div className="max-w-7xl mx-auto space-y-12">
@@ -38,19 +66,30 @@ export default function ProofAndTrust() {
           </div>
         </div> */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          <div className="bg-[#101315] border border-[#3B4147] rounded-lg p-6 space-y-2">
-            <p className="text-[#F4EFE4] font-semibold">
-              "After one session, I finally feel like we have a real plan. Not scary, just practical."
-            </p>
-            <p className="text-sm text-[#DAD3C5]">— Almir & Carol, Woodstock</p>
-          </div>
-          <div className="bg-[#101315] border border-[#3B4147] rounded-lg p-6 space-y-2">
-            <p className="text-[#F4EFE4] font-semibold">
-              "The coaching part changed everything. Now my kids know what to do if I can't."
-            </p>
-            <p className="text-sm text-[#DAD3C5]">— Rian & Gabriela, Kitchener</p>
-          </div>
+        <div className="mt-12">
+          <Tabs value={tab} onValueChange={setTab} className="max-w-3xl mx-auto">
+            <TabsList className="bg-transparent gap-2 mx-auto">
+              {testimonials.map((_, i) => (
+                <TabsTrigger
+                  key={`dot-${i}`}
+                  value={`t${i}`}
+                  className="w-3 h-3 rounded-full p-0 border border-[#3B4147] data-[state=active]:bg-[#B39567] cursor-pointer"
+                  aria-label={`Show testimonial ${i + 1}`}
+                />
+              ))}
+            </TabsList>
+            {testimonials.map((t, i) => (
+              <TabsContent
+                key={`t${i}`}
+                value={`t${i}`}
+              >
+                <div className="bg-[#101315] border border-[#3B4147] rounded-lg p-6 space-y-2 transition-all duration-500 data-[state=inactive]:opacity-0 data-[state=active]:opacity-100">
+                  <p className="text-[#F4EFE4] font-semibold">{t.quote}</p>
+                  <p className="text-sm text-[#DAD3C5]">{t.author}</p>
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </div>
     </section>
