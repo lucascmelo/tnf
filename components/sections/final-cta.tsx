@@ -23,7 +23,7 @@ export default function FinalCta({ onCtaClick }: FinalCtaProps) {
           Start My Home Safety Assessment
         </Button>
 
-        <p className="text-sm text-[#3B4147] italic">We're coaches, not installers. Buy gear from us — or anywhere.</p>
+        <p className="text-sm text-[#3B4147] italic">We're defence advisors, not installers. Buy gear from us — or anywhere.</p>
       </div>
     </section>
   )

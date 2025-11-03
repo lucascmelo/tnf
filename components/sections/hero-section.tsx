@@ -12,21 +12,34 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [showTopMask, setShowTopMask] = useState(true)
 
+  const forcePlay = () => {
+    try {
+      const win = iframeRef.current?.contentWindow
+      if (!win) return
+      win.postMessage(JSON.stringify({ event: "command", func: "mute", args: [] }), "*")
+      win.postMessage(JSON.stringify({ event: "command", func: "setPlaybackRate", args: [0.5] }), "*")
+      win.postMessage(JSON.stringify({ event: "command", func: "playVideo", args: [] }), "*")
+    } catch {}
+  }
+
   useEffect(() => {
     const iframe = iframeRef.current
     if (!iframe) return
 
-    const sendSetRate = () => {
+    const ensurePlayback = () => {
       try {
-        iframe.contentWindow?.postMessage(
-          JSON.stringify({ event: "command", func: "setPlaybackRate", args: [0.5] }),
-          "*"
-        )
+        const post = (payload: any) =>
+          iframe.contentWindow?.postMessage(JSON.stringify(payload), "*")
+
+        // Force muted inline playback then set rate and play
+        post({ event: "command", func: "mute", args: [] })
+        post({ event: "command", func: "setPlaybackRate", args: [0.5] })
+        post({ event: "command", func: "playVideo", args: [] })
       } catch {}
     }
 
-    sendSetRate()
-    const id = setInterval(sendSetRate, 800)
+    ensurePlayback()
+    const id = setInterval(ensurePlayback, 800)
     const timeout = setTimeout(() => clearInterval(id), 5000)
 
     // Fallback: hide the mask after a short delay in case onLoad doesn't fire in time
@@ -84,7 +97,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
         </div>
 
         {/* Right: Image */}
-        <div className="relative h-96 md:h-full rounded-lg overflow-hidden bg-gradient-to-br from-[#DAD3C5] to-[#F4EFE4]">
+        <div className="relative h-96 md:h-full rounded-lg overflow-hidden bg-gradient-to-br from-[#DAD3C5] to-[#F4EFE4]" onClick={forcePlay}>
           {/* <img
             src="/ontario-home-exterior-at-dusk-with-layered-warm-li.jpg"
             alt="Ontario home exterior at dusk with layered warm lighting"
@@ -100,6 +113,18 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
             onLoad={() => {
               // Hide soon after the iframe content loads
               setTimeout(() => setShowTopMask(false), 800)
+              // Kick playback once more on load for mobile
+              try {
+                const win = iframeRef.current?.contentWindow
+                win?.postMessage(
+                  JSON.stringify({ event: "command", func: "mute", args: [] }),
+                  "*",
+                )
+                win?.postMessage(
+                  JSON.stringify({ event: "command", func: "playVideo", args: [] }),
+                  "*",
+                )
+              } catch {}
             }}
             allowFullScreen
           ></iframe>

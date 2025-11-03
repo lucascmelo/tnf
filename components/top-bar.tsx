@@ -25,21 +25,24 @@ export default function TopBar({ onCtaClick }: TopBarProps) {
         } border-[#DAD3C5]`}
       data-section="utility"
     >
-      <div className="px-4 py-3 md:px-6 md:py-4 flex items-center justify-between max-w-7xl mx-auto">
-        <div className="text-xs md:text-sm text-[#3B4147] leading-relaxed hidden md:block">
-          {isSticky ? (
-            <span>🇨🇦 Serving Southwestern Ontario</span>
-          ) : (
-            <img
-              className="h-20 w-auto object-cover"
-              src="true-north-fortress-logo.png"
-              alt="True North Fortress Logo"
-            />
-          )}
+      <div
+        className={`px-4 py-3 md:px-6 md:py-4 flex items-center justify-between max-w-7xl mx-auto ${
+          !isSticky ? 'justify-self-center md:justify-self-auto' : ''
+        }`}
+      >
+        <div className="text-xs md:text-sm text-[#3B4147] leading-relaxed">
+          <span className={`${isSticky ? 'inline' : 'hidden'}`}>
+            🇨🇦 Serving Southwestern Ontario
+          </span>
+          <img
+            className={`${isSticky ? 'hidden' : 'inline'} h-md-20 h-16 w-auto object-cover`}
+            src="true-north-fortress-logo.png"
+            alt="True North Fortress Logo"
+          />
         </div>
         <Button
           onClick={onCtaClick}
-          className="bg-[#9D8356] text-white hover:bg-[#876F48] focus:ring-2 focus:ring-[#B39567] ml-auto cursor-pointer"
+          className={`${!isSticky ? 'hidden' : 'inline-flex'} md:inline-flex bg-[#9D8356] text-white hover:bg-[#876F48] focus:ring-2 focus:ring-[#B39567] ml-auto cursor-pointer`}
           data-cta="top"
           size="sm"
         >
