@@ -21,31 +21,31 @@ export default function IncludedSection({ onCtaClick }: IncludedSectionProps) {
             <li className="flex gap-4 items-start">
               <Check className="w-6 h-6 text-[#9D8356] flex-shrink-0 mt-0.5" />
               <span className="text-base text-[#101315]">
-                <strong>Full home audit</strong> — doors, windows, lighting, camera angles, approach routes
+                <strong>Full home audit</strong><br/> We inspect your doors, windows, lighting, camera angles, approach routes
               </span>
             </li>
             <li className="flex gap-4 items-start">
               <Check className="w-6 h-6 text-[#9D8356] flex-shrink-0 mt-0.5" />
               <span className="text-base text-[#101315]">
-                <strong>Written action plan</strong> — prioritized from "do today" to "contractor later"
+                <strong>Written action plan</strong><br/> Prioritized from "do today" to "contractor later"
               </span>
             </li>
             <li className="flex gap-4 items-start">
               <Check className="w-6 h-6 text-[#9D8356] flex-shrink-0 mt-0.5" />
               <span className="text-base text-[#101315]">
-                <strong>Family response training</strong> — safety-first actions that prioritize de-escalation.
+                <strong>Family response training</strong><br/> Safety-first actions that prioritize de-escalation.
               </span>
             </li>
             <li className="flex gap-4 items-start">
               <Check className="w-6 h-6 text-[#9D8356] flex-shrink-0 mt-0.5" />
               <span className="text-base text-[#101315]">
-                <strong>Unbiased gear list</strong> — we recommend; you decide where to purchase.
+                <strong>Unbiased gear list</strong><br/> We recommend; you decide where to purchase.
               </span>
             </li>
             <li className="flex gap-4 items-start">
               <Check className="w-6 h-6 text-[#9D8356] flex-shrink-0 mt-0.5" />
               <span className="text-base text-[#101315]">
-                <strong>Immediate win on the spot</strong> — at least one improvement.
+                <strong>Immediate win on the spot</strong><br/> At least one improvement.
               </span>
             </li>
           </ul>

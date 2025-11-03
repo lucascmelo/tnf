@@ -30,11 +30,11 @@ export default function ProofAndTrust() {
     return () => clearInterval(id)
   }, [tab, testimonials.length])
   return (
-    <section id="proof" className="py-16 md:py-24 px-4 md:px-6 bg-[#0E1A18]" data-section="proof">
+    <section id="proof" className="py-16 px-4 md:px-6 bg-[#0E1A18]" data-section="proof">
       <div className="max-w-7xl mx-auto space-y-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#F4EFE4] text-center leading-tight text-balance">
+        {/* <h2 className="text-3xl md:text-4xl font-bold text-[#F4EFE4] text-center leading-tight text-balance">
           Testimonials
-        </h2>
+        </h2> */}
 
         {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center text-center space-y-4">
@@ -66,8 +66,20 @@ export default function ProofAndTrust() {
           </div>
         </div> */}
 
-        <div className="mt-12">
+        <div className="">
           <Tabs value={tab} onValueChange={setTab} className="max-w-3xl mx-auto">
+            
+            {testimonials.map((t, i) => (
+              <TabsContent
+                key={`t${i}`}
+                value={`t${i}`}
+              >
+                <div className="bg-[#fff] border border-[#3B4147] rounded-lg p-6 space-y-2 transition-all duration-500 data-[state=inactive]:opacity-0 data-[state=active]:opacity-100">
+                  <p className="text-[#000] font-semibold">{t.quote}</p>
+                  <p className="text-sm text-[#000]">{t.author}</p>
+                </div>
+              </TabsContent>
+            ))}
             <TabsList className="bg-transparent gap-2 mx-auto">
               {testimonials.map((_, i) => (
                 <TabsTrigger
@@ -78,17 +90,6 @@ export default function ProofAndTrust() {
                 />
               ))}
             </TabsList>
-            {testimonials.map((t, i) => (
-              <TabsContent
-                key={`t${i}`}
-                value={`t${i}`}
-              >
-                <div className="bg-[#101315] border border-[#3B4147] rounded-lg p-6 space-y-2 transition-all duration-500 data-[state=inactive]:opacity-0 data-[state=active]:opacity-100">
-                  <p className="text-[#F4EFE4] font-semibold">{t.quote}</p>
-                  <p className="text-sm text-[#DAD3C5]">{t.author}</p>
-                </div>
-              </TabsContent>
-            ))}
           </Tabs>
         </div>
       </div>
