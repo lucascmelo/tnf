@@ -30,8 +30,11 @@ export default function TopBar({ onCtaClick }: TopBarProps) {
           {isSticky ? (
             <span>🇨🇦 Serving Southwestern Ontario</span>
           ) : (
-            <img className="h-20 w-auto object-cover"
-              src="/true-north-fortress-logo.png" alt="True North Fortress Logo" />
+            <img
+              className="h-20 w-auto object-cover"
+              src="true-north-fortress-logo.png"
+              alt="True North Fortress Logo"
+            />
           )}
         </div>
         <Button

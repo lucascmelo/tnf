@@ -66,7 +66,7 @@ export default function IncludedSection({ onCtaClick }: IncludedSectionProps) {
         {/* Right: Image */}
         <div className="relative h-96 md:h-full rounded-lg overflow-hidden bg-gradient-to-br from-[#DAD3C5] to-[#F4EFE4]">
           <img
-            src="/floorplan.png"
+            src="floorplan.png"
             alt="Security consultant with homeowners at kitchen island reviewing floor plan"
             className="w-full h-full object-cover"
           />

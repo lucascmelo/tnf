@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/true-north-fortress//_next/:path+",
+        "destination": "/true-north-fortress/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
