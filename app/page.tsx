@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-primary">
       {/* Header */}
-      <header className="border-b border-border/20">
+      {/* <header className="border-b border-border/20">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image src="/logo.png" alt="True North Fortress" width={180} height={60} className="h-12 w-auto" />
@@ -16,17 +16,18 @@ export default function HomePage() {
             Book Consultation
           </Button>
         </div>
-      </header>
+      </header> */}
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary to-primary/95" />
         <div className="container mx-auto px-4 py-24 md:py-32 relative">
+          <Image src="/logo.png" alt="True North Fortress" width={180} height={60} className="h-32 w-auto mx-auto mb-8" />
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 mb-8">
+            {/* <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 mb-8">
               <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
               <span className="text-sm text-primary-foreground/90">Limited Time Offer — Save $250</span>
-            </div>
+            </div> */}
 
             <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 text-balance leading-tight">
               Don't livestream your robbery.
