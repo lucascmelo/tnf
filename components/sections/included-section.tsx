@@ -10,7 +10,7 @@ interface IncludedSectionProps {
 export default function IncludedSection({ onCtaClick }: IncludedSectionProps) {
   return (
     <section id="included" className="py-16 md:py-24 px-4 md:px-6 bg-background" data-section="included">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[70%_30%] gap-12 items-center">
         {/* Left: Text */}
         <div className="space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-[#101315] leading-tight text-balance">
@@ -54,20 +54,20 @@ export default function IncludedSection({ onCtaClick }: IncludedSectionProps) {
             <p className="text-sm font-semibold text-[#3B4147]">One visit. One plan. One coach.</p>
           </div> */}
 
-          <Button
+          {/* <Button
             onClick={onCtaClick}
             className="bg-[#9D8356] text-white hover:bg-[#876F48] focus:ring-2 focus:ring-[#B39567] cursor-pointer"
             data-cta="included"
           >
             Plan My Visit
-          </Button>
+          </Button> */}
         </div>
 
         {/* Right: Image */}
         <div className="relative h-96 md:h-full rounded-lg overflow-hidden bg-gradient-to-br from-[#DAD3C5] to-[#F4EFE4]">
           <img
-            src="floorplan.png"
-            alt="Security consultant with homeowners at kitchen island reviewing floor plan"
+            src="advisor-and-family.png"
+            alt="Security consultant with homeowners reviewing floor plan"
             className="w-full h-full object-cover"
           />
         </div>

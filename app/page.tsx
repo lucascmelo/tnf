@@ -12,6 +12,7 @@ import HowItWorks from "@/components/sections/how-it-works"
 import ProofAndTrust from "@/components/sections/proof-and-trust"
 import FaqSection from "@/components/sections/faq-section"
 import FinalCta from "@/components/sections/final-cta"
+import About from "@/components/sections/about"
 
 export default function Page() {
   const [showAssessment, setShowAssessment] = useState(false)
@@ -27,6 +28,7 @@ export default function Page() {
       <LocalReality />
       <IncludedSection onCtaClick={handleCtaClick} />
       <HowItWorks />
+      <About />
       {/* <WhyThisWorks /> */}
       <ProofAndTrust />
       <FaqSection />
